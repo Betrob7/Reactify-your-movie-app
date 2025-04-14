@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
+import Header from "../../components/header/Header";
 
 function HomePage() {
     const [homePageMovies, setHomePageMovies] = useState([]);
@@ -23,7 +24,7 @@ function HomePage() {
 
   return (
     <section className="home-page">
-
+      <Header />
     </section>
   )
 }
