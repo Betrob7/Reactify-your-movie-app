@@ -1,31 +1,27 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Carousel from "../../components/carousel/Carousel";
 
 function HomePage() {
     const [homePageMovies, setHomePageMovies] = useState([]);
     const url = "https://santosnr6.github.io/Data/favoritemovies.json";
 
     useEffect(() => {
-        axios.get(url)
-        .then(response => {
-            console.log(response.data);
-            const shuffled = response.data.sort(() => 0.5 - Math.random());
-            setHomePageMovies(shuffled);
+        axios
+            .get(url)
+            .then((response) => {
+                console.log(response.data);
+                const shuffled = response.data.sort(() => 0.5 - Math.random());
+                setHomePageMovies(shuffled);
             })
-        .catch(error => console.log(error));
-        
-    }, [])
-      
+            .catch((error) => console.log(error));
+    }, []);
 
-    
-    
-
-
-  return (
-    <section className="home-page">
-
-    </section>
-  )
+    return (
+        <section className="home-page">
+            <Carousel homePageMovies={homePageMovies} />
+        </section>
+    );
 }
 
-export default HomePage
+export default HomePage;
