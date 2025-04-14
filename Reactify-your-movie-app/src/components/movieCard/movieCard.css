@@ -1,0 +1,32 @@
+
+.movie-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+  }
+  
+  .movie-card__article {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.5rem;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .movie-card__article:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .movie-card__image {
+    width: 100%;
+    min-height: 200px;
+    object-fit: cover; 
+    border: 1px solid black;
+  }
+  
+ 
+  

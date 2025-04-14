@@ -1,6 +1,9 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react"
+import axios from "axios"
+import Header from "../../components/header/Header";
+import MovieCard from "../../components/movieCard/MovieCard";
 import Carousel from "../../components/carousel/Carousel";
+
 
 function HomePage() {
     const [homePageMovies, setHomePageMovies] = useState([]);
@@ -16,12 +19,14 @@ function HomePage() {
             })
             .catch((error) => console.log(error));
     }, []);
-
+      
     return (
-        <section className="home-page">
-            <Carousel homePageMovies={homePageMovies} />
-        </section>
-    );
+    <section className="home-page">
+        <Header />
+        <Carousel homePageMovies={homePageMovies} />
+        <MovieCard homePageMovies={homePageMovies} />
+    </section>
+  )
 }
 
 export default HomePage;
