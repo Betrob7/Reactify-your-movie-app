@@ -3,3 +3,13 @@
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --main-bg-color: #000;
+  --main-font-color: #fff;
+  --highlight-font-color: yellow;
+}
+
+body {
+  background-color: var(--main-bg-color);
+}
