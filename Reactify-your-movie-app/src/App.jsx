@@ -10,7 +10,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/movie-details" element={<MovieDetailsPage />} />
+        {/* hämta id beroende på filmens omdb-id? useParams?*/}
+        <Route path="/movie-details/:id" element={<MovieDetailsPage />} />
         <Route path="/search-results" element={<SearchResultsPage />} />
         <Route path="/watchlist" element={<WatchListPage />} />
         <Route path="*" element={<ErrorPage />} />
