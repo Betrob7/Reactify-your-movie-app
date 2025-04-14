@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
+import Header from "../../components/header/Header";
 import MovieCard from "../../components/movieCard/MovieCard";
 
 function HomePage() {
@@ -19,6 +20,7 @@ function HomePage() {
       
     return (
     <section className="home-page">
+      <Header />
         <MovieCard homePageMovies={homePageMovies} />
     </section>
   )

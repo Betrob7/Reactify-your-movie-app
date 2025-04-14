@@ -1,0 +1,32 @@
+.header {
+    background-color: rgb(23, 23, 23);
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    padding: 4rem 2rem;
+    place-items: center;
+}
+
+.header__form {
+    display: flex;
+    gap: 1rem;
+}
+
+.header__nav {
+    color: white;
+    text-decoration: none;
+}
+
+.header__form-input {
+    padding: .5rem;
+    border: none;
+    border-radius: 5px;
+    width: 20rem;
+}
+
+.header__form-btn {
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
