@@ -1,34 +1,31 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Header from "../../components/header/Header";
+import MovieCard from "../../components/movieCard/MovieCard";
+import Carousel from "../../components/carousel/Carousel";
 import { Link } from "react-router-dom";
 
 function HomePage() {
-  const [movies, setMovies] = useState([]);
+  const [homePageMovies, setHomePageMovies] = useState([]);
+  const url = "https://santosnr6.github.io/Data/favoritemovies.json";
 
   useEffect(() => {
-    // Hämta filmer från API en gång
-    fetch("https://santosnr6.github.io/Data/favoritemovies.json")
-      .then((response) => response.json())
-      .then((data) => {
-        setMovies(data); // Sätt filmsdata i state
+    axios
+      .get(url)
+      .then((response) => {
+        console.log(response.data);
+        const shuffled = response.data.sort(() => 0.5 - Math.random());
+        setHomePageMovies(shuffled);
       })
-      .catch((error) => {
-        console.error("Det gick inte att hämta filmer:", error);
-      });
+      .catch((error) => console.log(error));
   }, []);
 
   return (
-    <div>
-      <ul>
-        {movies.map((movie) => (
-          <li key={movie.imdbID}>
-            {/* Skickar hela filmobjektet via state */}
-            <Link to={`/movie-details/${movie.imdbID}`} state={{ movie }}>
-              {movie.Title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <section className="home-page">
+      <Header />
+      <Carousel homePageMovies={homePageMovies} />
+      <MovieCard homePageMovies={homePageMovies} />
+    </section>
   );
 }
 
