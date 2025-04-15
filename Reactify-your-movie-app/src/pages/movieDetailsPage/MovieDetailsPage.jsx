@@ -1,41 +1,105 @@
 import { useParams, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import axios from "axios";
 import "./movieDetailsPage.css";
+import Header from "../../components/header/Header";
+import { getValueOrDefault } from "../../utils/utils.js";
+
+// för att länka till spec film  <Link to={`/movie-details/${movie.imdbID}`} state={{ movie }}></Link>
 
 function MovieDetailsPage() {
   const { id } = useParams(); // Hämta omdbID från URL
   const location = useLocation();
-  const movie = location.state?.movie; // Hämtar filmen via state som skickades från HomePage
+  const stateMovie = location.state?.movie; // Hämtar filmen via state som skickades från HomePage
+  const [movie, setMovie] = useState(stateMovie || null);
+  const [loading, setLoading] = useState(!stateMovie);
 
   const missingPoster = "/assets/missing-poster.svg";
+  const apiUrl = "https://www.omdbapi.com/";
+  const apiKey = "1a195302";
+
+  useEffect(() => {
+    if (stateMovie && !movie.Plot) {
+      // Om vi inte har en full plot från stateMovie, hämta från OMDb
+      axios
+        .get(apiUrl, {
+          params: {
+            apikey: apiKey,
+            i: id,
+            plot: "full",
+          },
+        })
+        .then((response) => {
+          if (response.data.Response === "True") {
+            setMovie((prevMovie) => ({
+              ...prevMovie, // Behåll tidigare data från stateMovie
+              ...response.data, // Uppdatera med data från OMDb
+            }));
+          } else {
+            setError("Kunde inte hitta filmdata.");
+          }
+        })
+        .catch((error) => {
+          console.log("Något gick fel vid hämtning.", error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
+  }, [id, movie, stateMovie]);
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <div className="wrapper">
+          <p className="movie__paragraph">Laddar...</p>;
+        </div>
+      </>
+    );
+  }
 
   if (!movie) {
-    return <p className="movie__paragraph movie__not-found">Ingen film att hämta</p>;
+    return (
+      <>
+        <Header />
+        <div className="wrapper">
+          <p className="movie__paragraph movie__not-found">Ingen film att hämta</p>
+        </div>
+      </>
+    );
   }
+
   return (
     // döp allt till "{movie.Released}, {movie.Year}, {movie.Genre} etc."
-    <section className="movie__section">
-      <section className="fav-section">
-        <img src={movie.Poster} alt={`This is ${movie.Title}`} className="movie__poster" />
-        <p className="movie__toggle-fav">Lägg till /ta bort</p>
-      </section>
-      <section className="movie__info-section">
-        <h1 className="movie__title">{movie.Title}</h1>
-        <section className="movie__extra-info">
-          <p className="movie__paragraph">year</p>
-          <p className="movie__paragraph">Genre</p>
-          <p className="movie__paragraph">Released</p>
+    <>
+      <Header />
+      <div className="wrapper">
+        <section className="movie__section">
+          <section className="fav-section">
+            <img src={movie.Poster} alt={`This is ${movie.Title}`} className="movie__poster" />
+            <p className="movie__toggle-fav">Lägg till /ta bort</p>
+          </section>
+          <section className="movie__info-section">
+            <h1 className="movie__title">{movie.Title}</h1>
+            <section className="movie__extra-info">
+              <p className="movie__paragraph">{getValueOrDefault(movie.Runtime)}</p>
+              <p className="movie__paragraph">{getValueOrDefault(movie.Genre)}</p>
+              <p className="movie__paragraph">imdb Rating: {getValueOrDefault(movie.imdbRating)}</p>
+            </section>
+            <p className="movie__paragraph">{getValueOrDefault(movie.Plot)} </p>
+            <section className="movie__extra-info">
+              <p className="movie__paragraph">
+                <strong>Director:</strong> {getValueOrDefault(movie.Director)}
+              </p>
+              <p className="movie__paragraph">
+                <strong>Actors:</strong> {getValueOrDefault(movie.Actors)}
+              </p>
+            </section>
+          </section>
         </section>
-        <p className="movie__paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula dolor ut magna faucibus dictum. Cras sed nisl dui. Etiam
-          egestas velit et libero gravida cursus. In at pretium justo, vitae facilisis erat. Ut nibh risus, sodales a commodo ac, eleifend
-          in erat. Donec fringilla, turpis aliquet posuere suscipit, ligula diam malesuada nunc, sit amet facilisis velit justo et leo.
-          Donec sed elit nec ipsum ultricies eleifend vel vitae massa. Donec id nisl vehicula, efficitur lacus vel, interdum eros. Phasellus
-          eleifend, nulla non ornare volutpat, tortor tellus elementum metus, vitae consectetur nisi odio eu quam. Maecenas non velit
-          bibendum augue vehicula interdum. Aenean eu tincidunt tellus. Sed convallis interdum ullamcorper.
-        </p>
-      </section>
-    </section>
+      </div>
+    </>
   );
 }
 

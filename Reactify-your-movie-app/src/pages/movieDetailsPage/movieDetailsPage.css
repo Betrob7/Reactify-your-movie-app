@@ -1,9 +1,16 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem 6rem;
+}
+
 .movie__section {
   display: grid;
-  grid-template-columns: 1fr 2fr; /* För att skapa två kolumner */
+  grid-template-columns: 1fr 3fr; /* För att skapa två kolumner */
   grid-template-rows: auto;
 
-  padding: 4rem;
+  max-width: 1200px;
 }
 .fav-section {
   position: relative;
@@ -28,7 +35,7 @@
   display: flex; /* Använd flexbox istället för grid för att bättre hantera mellanrum */
   flex-direction: column; /* Gör så att elementen placeras vertikalt */
   gap: 1rem; /* Skapar utrymme mellan elementen */
-  padding: 2rem;
+  padding: 0rem 2rem;
   justify-content: flex-start; /* Se till att elementen placeras högst upp */
   /* display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -49,13 +56,13 @@
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  gap: 3rem;
 
   .movie__paragraph {
     font-style: italic;
     font-size: 1rem;
     color: var(--main-font-color);
-    padding-left: 1rem;
+    /* padding: 0rem 1rem; */
   }
 }
 
@@ -66,6 +73,10 @@
 
   color: var(--main-font-color);
   letter-spacing: 1px;
+}
+
+.movie__not-found {
+  color: var(--error-font-color);
 }
 
 @media screen and (max-width: 550px) {

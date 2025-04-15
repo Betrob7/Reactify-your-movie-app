@@ -1,16 +1,19 @@
-import "./movieCard.css"
+import "./movieCard.css";
+import { Link } from "react-router-dom";
 
-function MovieCard({homePageMovies}) {
+function MovieCard({ homePageMovies }) {
   return (
     <section className="movie-card">
-        {homePageMovies.map((movie) => (
-            <article key={movie.imdbID} className="movie-card__article">
-                <img className="movie-card__image" src={movie.Poster} alt={`Poster för filmen ${movie.Title}`} />
-                <h3 className="movie-card__title">{movie.Title}</h3>
-            </article>
-        ))}
+      {homePageMovies.map((movie) => (
+        <Link to={`/movie-details/${movie.imdbID}`} state={{ movie }}>
+          <article key={movie.imdbID} className="movie-card__article">
+            <img className="movie-card__image" src={movie.Poster} alt={`Poster för filmen ${movie.Title}`} />
+            <h3 className="movie-card__title">{movie.Title}</h3>
+          </article>
+        </Link>
+      ))}
     </section>
-  )
+  );
 }
 
-export default MovieCard
+export default MovieCard;

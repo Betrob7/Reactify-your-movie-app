@@ -8,6 +8,7 @@
   --main-bg-color: #000;
   --main-font-color: #fff;
   --highlight-font-color: yellow;
+  --error-font-color: red;
 }
 
 body {
