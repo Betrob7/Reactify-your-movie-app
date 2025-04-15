@@ -53,7 +53,7 @@ function MovieDetailsPage() {
       <>
         <Header />
         <div className="wrapper">
-          <p className="movie__paragraph">Laddar...</p>;
+          <p className="movie__paragraph">Loading...</p>;
         </div>
       </>
     );
@@ -64,7 +64,7 @@ function MovieDetailsPage() {
       <>
         <Header />
         <div className="wrapper">
-          <p className="movie__paragraph movie__not-found">Ingen film att hämta</p>
+          <p className="movie__paragraph movie__not-found">No movie to fetch...</p>
         </div>
       </>
     );
@@ -77,11 +77,15 @@ function MovieDetailsPage() {
       <div className="wrapper">
         <section className="movie__section">
           <section className="fav-section">
-            <img src={movie.Poster} alt={`This is ${movie.Title}`} className="movie__poster" />
-            <p className="movie__toggle-fav">Lägg till /ta bort</p>
+            <img src={movie.Poster === "N/A" ? missingPoster : movie.Poster} alt={`Poster for ${movie.Title}`} className="movie__poster" />
+            <p className="movie__toggle-fav" aria-label="add or remove from watchlist">
+              Add / remove
+            </p>
           </section>
-          <section className="movie__info-section">
-            <h1 className="movie__title">{movie.Title}</h1>
+          <section className="movie__info-section" aria-labelledby="movie-info-heading">
+            <h1 className="movie__title" id="movie-info-heading">
+              {movie.Title}
+            </h1>
             <section className="movie__extra-info">
               <p className="movie__paragraph">{getValueOrDefault(movie.Runtime)}</p>
               <p className="movie__paragraph">{getValueOrDefault(movie.Genre)}</p>
