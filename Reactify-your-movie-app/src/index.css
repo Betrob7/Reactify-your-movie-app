@@ -7,6 +7,7 @@
 :root {
     --main-bg-color: #000;
     --main-font-color: #002244;
+    --secondary-font-color: white;
     --main-card-color: #ffd700;
     --highlight-font-color: yellow;
     --error-font-color: red;
