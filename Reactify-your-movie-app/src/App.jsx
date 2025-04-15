@@ -45,7 +45,7 @@ function App() {
         <Route path="/" element={<HomePage watchlist={watchlist} toggleWatchlist={toggleWatchlist} homePageMovies={homePageMovies} />} />
         {/* hämta id beroende på filmens omdb-id? useParams?*/}
         <Route path="/movie-details/:id" element={<MovieDetailsPage />} />
-        <Route path="/search" element={<SearchResultsPage />} />
+        <Route path="/search" element={<SearchResultsPage watchlist={watchlist} toggleWatchlist={toggleWatchlist} />} />
         <Route path="/watchlist" element={<WatchListPage watchlist={watchlist} toggleWatchlist={toggleWatchlist} />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>

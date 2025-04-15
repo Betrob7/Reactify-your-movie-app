@@ -1,0 +1,19 @@
+
+.error-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center ;
+    align-items: center;
+}
+
+.error-page__title {
+    padding: 2rem;
+    text-align: center;
+    color: white;
+}
+
+.error-page__animation {
+    width: 70%;
+    height: 70%;
+    margin-bottom: 1rem;
+}
