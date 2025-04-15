@@ -8,12 +8,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
-    const [homePageMovies, setHomePageMovies] = useState([]);
-    const [watchlist, setWatchlist] = useState(() => {
-        const saved = localStorage.getItem("watchlist");
-        return saved ? JSON.parse(saved) : [];
-      }); // useEffect gjorde att watchlist försvann vid uppdatering av sidan så fick göra såhär istället
-      
+  const [homePageMovies, setHomePageMovies] = useState([]);
+  const [watchlist, setWatchlist] = useState(() => {
+    const saved = localStorage.getItem("watchlist");
+    return saved ? JSON.parse(saved) : [];
+  }); // useEffect gjorde att watchlist försvann vid uppdatering av sidan så fick göra såhär istället
+
   const url = "https://santosnr6.github.io/Data/favoritemovies.json";
 
   useEffect(() => {
@@ -39,28 +39,18 @@ function App() {
       })
       .catch((error) => console.log(error));
   }, []);
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={
-                    <HomePage 
-                    watchlist={watchlist} 
-                    toggleWatchlist={toggleWatchlist}
-                    homePageMovies={homePageMovies} />} />
-                {/* hämta id beroende på filmens omdb-id? useParams?*/}
-                <Route
-                    path="/movie-details/:id"
-                    element={<MovieDetailsPage />}
-                />
-                <Route path="/search-results" element={<SearchResultsPage />} />
-                <Route path="/watchlist" element={
-                    <WatchListPage 
-                    watchlist={watchlist}
-                    toggleWatchlist={toggleWatchlist}/>} />
-                <Route path="*" element={<ErrorPage />} />
-            </Routes>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage watchlist={watchlist} toggleWatchlist={toggleWatchlist} homePageMovies={homePageMovies} />} />
+        {/* hämta id beroende på filmens omdb-id? useParams?*/}
+        <Route path="/movie-details/:id" element={<MovieDetailsPage />} />
+        <Route path="/search" element={<SearchResultsPage />} />
+        <Route path="/watchlist" element={<WatchListPage watchlist={watchlist} toggleWatchlist={toggleWatchlist} />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
