@@ -1,57 +1,61 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { handleBlurErrorMessage, setErrorMessageTimeout } from "../../utils/utils";
+import {
+    handleBlurErrorMessage,
+    setErrorMessageTimeout,
+} from "../../utils/utils";
 import "./header.css";
+import movieIcon from "../../assets/movie-icon.png";
 
 function Header() {
-  const [text, setText] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
+    const [text, setText] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (text.trim() === "") {
-      setErrorMessage("Please enter a movie name");
-    } else {
-      setErrorMessage("");
-      navigate(`/search?q=${text}`);
-    }
-  };
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (text.trim() === "") {
+            setErrorMessage("Please enter a movie name");
+        } else {
+            setErrorMessage("");
+            navigate(`/search?q=${text}`);
+        }
+    };
 
-  const handleBlur = () => {
-    handleBlurErrorMessage(errorMessage, setErrorMessage);
-  };
+    const handleBlur = () => {
+        handleBlurErrorMessage(errorMessage, setErrorMessage);
+    };
 
-  useEffect(() => {
-    setErrorMessageTimeout(errorMessage, setErrorMessage);
-  }, [errorMessage]);
+    useEffect(() => {
+        setErrorMessageTimeout(errorMessage, setErrorMessage);
+    }, [errorMessage]);
 
-  return (
-    <header className="header">
-      <Link className="header__nav" to="/">
-        <h1>MovieApp</h1>
-      </Link>
-      <form className="header__form" onSubmit={handleSearch}>
-        <input
-          className="header__form-input"
-          type="text"
-          placeholder={errorMessage || "Search movie..."}
-          aria-label="Search for movie"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          onBlur={handleBlur}
-        />
-        <button className="header__form-btn" type="submit">
-          Search
-        </button>
-      </form>
-      <nav>
-        <Link className="header__nav" to="/watchlist">
-          Watch List
-        </Link>
-      </nav>
-    </header>
-  );
+    return (
+        <header className="header">
+            <Link className="header__nav" to="/">
+                <img src={movieIcon} alt="Movie-app icon" class="movie-icon" />
+            </Link>
+            <form className="header__form" onSubmit={handleSearch}>
+                <input
+                    className="header__form-input"
+                    type="text"
+                    placeholder={errorMessage || "Search movie..."}
+                    aria-label="Search for movie"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    onBlur={handleBlur}
+                />
+                <button className="header__form-btn" type="submit">
+                    Search
+                </button>
+            </form>
+            <nav>
+                <Link className="header__nav" to="/watchlist">
+                    Watch List
+                </Link>
+            </nav>
+        </header>
+    );
 }
 
 export default Header;
