@@ -55,7 +55,7 @@ function SearchResultsPage() {
   }, [query]);
 
   return (
-    <>
+    <section className="search-page">
       <Header />
       <h2>Sökresultat för: {query}</h2>
       {fel && <p>{fel}</p>}
@@ -71,7 +71,7 @@ function SearchResultsPage() {
       </div> */}
       {/* ))}
       </div> */}
-    </>
+    </section>
   );
 }
 

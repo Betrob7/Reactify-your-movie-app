@@ -2,9 +2,9 @@ export function getValueOrDefault(value, defaultText = "Information saknas") {
   return value ? value : defaultText;
 }
 
-export const handleBlurErrorMessage = (errorMessage, resetErrorMessageState) => {
+export const handleBlurErrorMessage = (errorMessage, resetError) => {
   if (errorMessage) {
-    resetErrorMessageState(""); // Återställ placeholder om användaren klickar utanför
+    resetError(""); // Återställ placeholder om användaren klickar utanför
   }
 };
 
