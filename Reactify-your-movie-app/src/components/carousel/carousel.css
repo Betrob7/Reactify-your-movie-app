@@ -1,8 +1,8 @@
 .slick-prev {
-    left: 5%;
+    left: 3%;
 }
 .slick-next {
-    right: 5%;
+    right: 3%;
 }
 
 .slick-prev,
@@ -14,4 +14,8 @@
     height: 40px;
     width: 40px;
     opacity: 1;
+}
+
+.slider-container {
+    padding: 0 2rem;
 }
