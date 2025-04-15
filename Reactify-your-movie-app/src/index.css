@@ -1,17 +1,22 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 :root {
-    --main-bg-color: #000;
-    --main-font-color: #002244;
-    --main-card-color: #ffd700;
-    --highlight-font-color: yellow;
-    --error-font-color: red;
+  --main-dark-color: #000;
+  --main-font-color: #fff;
+  --moviecard-font-color: #002244;
+  --moviecard-color: rgb(246, 246, 189);
+  --icon-bg-color: rgba(0, 0, 0, 0.6);
+
+  --highlight-popcorn-color: #ffc107;
+  --popcorn-color: red;
+
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 body {
-    background-color: var(--main-bg-color);
+  background-color: var(--main-dark-color);
 }
