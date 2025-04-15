@@ -3,24 +3,21 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./movieDetailsPage.css";
 import Header from "../../components/header/Header";
-import { getValueOrDefault } from "../../utils/utils.js";
-
-// för att länka till spec film  <Link to={`/movie-details/${movie.imdbID}`} state={{ movie }}></Link>
+import FullMovieCard from "../../components/fullMovieCard/FullMovieCard";
 
 function MovieDetailsPage() {
-  const { id } = useParams(); // Hämta omdbID från URL
+  const { id } = useParams();
   const location = useLocation();
-  const stateMovie = location.state?.movie; // Hämtar filmen via state som skickades från HomePage
+  const stateMovie = location.state?.movie;
   const [movie, setMovie] = useState(stateMovie || null);
   const [loading, setLoading] = useState(!stateMovie);
+  const [error, setError] = useState(null);
 
-  const missingPoster = "/assets/missing-poster.svg";
   const apiUrl = "https://www.omdbapi.com/";
   const apiKey = "1a195302";
 
   useEffect(() => {
     if (stateMovie && !movie.Plot) {
-      // Om vi inte har en full plot från stateMovie, hämta från OMDb
       axios
         .get(apiUrl, {
           params: {
@@ -32,8 +29,8 @@ function MovieDetailsPage() {
         .then((response) => {
           if (response.data.Response === "True") {
             setMovie((prevMovie) => ({
-              ...prevMovie, // Behåll tidigare data från stateMovie
-              ...response.data, // Uppdatera med data från OMDb
+              ...prevMovie,
+              ...response.data,
             }));
           } else {
             setError("Kunde inte hitta filmdata.");
@@ -41,6 +38,7 @@ function MovieDetailsPage() {
         })
         .catch((error) => {
           console.log("Något gick fel vid hämtning.", error);
+          setError("Något gick fel vid hämtning.");
         })
         .finally(() => {
           setLoading(false);
@@ -53,51 +51,28 @@ function MovieDetailsPage() {
       <>
         <Header />
         <div className="wrapper">
-          <p className="movie__paragraph">Laddar...</p>;
+          <p className="movie__paragraph">Laddar...</p>
         </div>
       </>
     );
   }
 
-  if (!movie) {
+  if (!movie || error) {
     return (
       <>
         <Header />
         <div className="wrapper">
-          <p className="movie__paragraph movie__not-found">Ingen film att hämta</p>
+          <p className="movie__paragraph movie__not-found">{error || "Ingen film att hämta"}</p>
         </div>
       </>
     );
   }
 
   return (
-    // döp allt till "{movie.Released}, {movie.Year}, {movie.Genre} etc."
     <>
       <Header />
       <div className="wrapper">
-        <section className="movie__section">
-          <section className="fav-section">
-            <img src={movie.Poster} alt={`This is ${movie.Title}`} className="movie__poster" />
-            <p className="movie__toggle-fav">Lägg till /ta bort</p>
-          </section>
-          <section className="movie__info-section">
-            <h1 className="movie__title">{movie.Title}</h1>
-            <section className="movie__extra-info">
-              <p className="movie__paragraph">{getValueOrDefault(movie.Runtime)}</p>
-              <p className="movie__paragraph">{getValueOrDefault(movie.Genre)}</p>
-              <p className="movie__paragraph">imdb Rating: {getValueOrDefault(movie.imdbRating)}</p>
-            </section>
-            <p className="movie__paragraph">{getValueOrDefault(movie.Plot)} </p>
-            <section className="movie__extra-info">
-              <p className="movie__paragraph">
-                <strong>Director:</strong> {getValueOrDefault(movie.Director)}
-              </p>
-              <p className="movie__paragraph">
-                <strong>Actors:</strong> {getValueOrDefault(movie.Actors)}
-              </p>
-            </section>
-          </section>
-        </section>
+        <FullMovieCard movie={movie} />
       </div>
     </>
   );

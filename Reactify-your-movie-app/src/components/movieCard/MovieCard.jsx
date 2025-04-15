@@ -2,6 +2,7 @@ import "./movieCard.css";
 import { Link } from "react-router-dom";
 import { GiPopcorn } from "react-icons/gi";
 import confetti from "canvas-confetti";
+import missingPoster from "../../assets/missing-poster.svg";
 
 function MovieCard({ homePageMovies, watchlist, toggleWatchlist }) {
   function triggerConfettiFromButton(e) {
@@ -25,26 +26,30 @@ function MovieCard({ homePageMovies, watchlist, toggleWatchlist }) {
         const inWatchlist = (watchlist || []).some((m) => m.imdbID === movie.imdbID);
 
         return (
-          <article key={movie.imdbID} className="movie-card__article">
-            <button
-              className={`movie-card__icon-btn ${inWatchlist ? "pop" : ""}`}
-              onClick={(e) => {
-                e.preventDefault();
-                if (!inWatchlist) {
-                  triggerConfettiFromButton(e);
-                }
-                toggleWatchlist(movie);
-              }}
-            >
-              {inWatchlist && <GiPopcorn className="popcorn-filled" />}
-              {!inWatchlist && <GiPopcorn />}
-            </button>
+          <Link to={`/movie-details/${movie.imdbID}`} state={{ movie }} key={movie.imdbID}>
+            <article className="movie-card__article">
+              <button
+                className={`movie-card__icon-btn ${inWatchlist ? "pop" : ""}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (!inWatchlist) {
+                    triggerConfettiFromButton(e);
+                  }
+                  toggleWatchlist(movie);
+                }}
+              >
+                {inWatchlist && <GiPopcorn className="popcorn-filled" />}
+                {!inWatchlist && <GiPopcorn />}
+              </button>
 
-            <Link to={`/movie-details/${movie.imdbID}`} state={{ movie }}>
-              <img className="movie-card__image" src={movie.Poster} alt={`Poster för filmen ${movie.Title}`} />
+              <img
+                className="movie-card__image"
+                src={movie.Poster !== "N/A" ? movie.Poster : missingPoster}
+                alt={`Poster för filmen ${movie.Title}`}
+              />
               <h3 className="movie-card__title">{movie.Title}</h3>
-            </Link>
-          </article>
+            </article>
+          </Link>
         );
       })}
     </section>

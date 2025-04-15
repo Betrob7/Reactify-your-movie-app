@@ -11,6 +11,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import MovieCard from "../../components/movieCard/MovieCard";
 import Header from "../../components/header/Header";
+import "./searchResultsPage.css";
 
 function SearchResultsPage() {
   const [filmer, setFilmer] = useState([]);
@@ -58,7 +59,7 @@ function SearchResultsPage() {
     <>
       <Header />
       <section className="search-page">
-        <h2>Sökresultat för: {query}</h2>
+        <h1 className="search__title">Sökresultat för: {query}</h1>
         {fel && <p>{fel}</p>}
         <MovieCard homePageMovies={filmer} />
       </section>

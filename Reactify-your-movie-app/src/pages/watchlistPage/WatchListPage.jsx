@@ -19,7 +19,7 @@ function WatchListPage({ watchlist = [], toggleWatchlist }) {
     <>
       <Header />
       <section className="watchlist">
-        <h2 className="watchlist__title">Min Watchlist</h2>
+        <h1 className="watchlist__title">Min Watchlist</h1>
         <MovieCard homePageMovies={watchlist} watchlist={watchlist} toggleWatchlist={toggleWatchlist} />
       </section>
     </>
