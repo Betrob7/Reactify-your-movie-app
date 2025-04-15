@@ -55,11 +55,13 @@ function SearchResultsPage() {
   }, [query]);
 
   return (
-    <section className="search-page">
+    <>
       <Header />
-      <h2>Sökresultat för: {query}</h2>
-      {fel && <p>{fel}</p>}
-      <MovieCard homePageMovies={filmer} />
+      <section className="search-page">
+        <h2>Sökresultat för: {query}</h2>
+        {fel && <p>{fel}</p>}
+        <MovieCard homePageMovies={filmer} />
+      </section>
       {/* <div>
         {filmer.map((film) => ( */}
       {/* //{" "}
@@ -71,7 +73,7 @@ function SearchResultsPage() {
       </div> */}
       {/* ))}
       </div> */}
-    </section>
+    </>
   );
 }
 
