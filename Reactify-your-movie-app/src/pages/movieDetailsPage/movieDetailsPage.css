@@ -46,7 +46,7 @@
 }
 .movie__title {
   font-size: 2rem;
-  color: var(--secondary-font-color);
+  color: var(--main-font-color);
 
   grid-column: 1 / -1;
 }
@@ -61,7 +61,7 @@
   .movie__paragraph {
     font-style: italic;
     font-size: 1rem;
-    color: var(--secondary-font-color);
+    color: var(--main-font-color);
     /* padding: 0rem 1rem; */
   }
 }
@@ -71,7 +71,7 @@
   margin-bottom: 10px;
   grid-column: 1/ -1;
 
-  color: var(--secondary-font-color);
+  color: var(--main-font-color);
   letter-spacing: 1px;
 }
 

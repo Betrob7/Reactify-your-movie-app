@@ -1,0 +1,5 @@
+.search__title {
+  color: var(--main-font-color);
+  text-align: center;
+  padding: 2rem;
+}

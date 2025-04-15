@@ -1,12 +1,10 @@
-
-
-
 .watchlist__title {
-    color: white;
-    padding: 2rem;
+  color: white;
+  padding: 2rem;
+  text-align: center;
 }
 
 .watchlist__info {
-    text-align: center;
-    color: red;
+  text-align: center;
+  color: var(--main-font-color);
 }
