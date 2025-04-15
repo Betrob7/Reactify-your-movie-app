@@ -1,3 +1,61 @@
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { handleBlurErrorMessage, setErrorMessageTimeout } from "../../utils/utils";
+import "./header.css";
+
+function Header() {
+  const [text, setText] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (text.trim() === "") {
+      setErrorMessage("Please enter a movie name");
+    } else {
+      setErrorMessage("");
+      navigate(`/search?q=${text}`);
+    }
+  };
+
+  const handleBlur = () => {
+    handleBlurErrorMessage(errorMessage, setErrorMessage);
+  };
+
+  useEffect(() => {
+    setErrorMessageTimeout(errorMessage, setErrorMessage);
+  }, [errorMessage]);
+
+  return (
+    <header className="header">
+      <Link className="header__nav" to="/">
+        <h1>MovieApp</h1>
+      </Link>
+      <form className="header__form" onSubmit={handleSearch}>
+        <input
+          className="header__form-input"
+          type="text"
+          placeholder={errorMessage || "Search movie..."}
+          aria-label="Search for movie"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onBlur={handleBlur}
+        />
+        <button className="header__form-btn" type="submit">
+          Search
+        </button>
+      </form>
+      <nav>
+        <Link className="header__nav" to="/watchlist">
+          Watch List
+        </Link>
+      </nav>
+    </header>
+  );
+}
+
+export default Header;
+
 // import './header.css'
 // import { Link } from 'react-router-dom';
 // import { useState, useEffect } from "react";
@@ -59,41 +117,3 @@
 // }
 
 // export default Header
-
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import './header.css'
-
-function Header() {
-  const [text, setText] = useState('');
-  const navigate = useNavigate();
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (text.trim() !== '') {
-      navigate(`/search?q=${text}`);
-    }
-  };
-
-  return (
-    <header className='header'>
-      <h1>MovieApp</h1>
-      <form className='header__form' onSubmit={handleSearch}>
-        <input
-          className='header__form-input'
-          type="text"
-          placeholder="Sök film..."
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <button className='header__form-btn' type="submit">Sök</button>
-      </form>
-      <nav>
-        <Link className='header__nav' to="/watchlist">Watch List</Link>
-      </nav>
-    </header>
-  );
-}
-
-export default Header;
-
