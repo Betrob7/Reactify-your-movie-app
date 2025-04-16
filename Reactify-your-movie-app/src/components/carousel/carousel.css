@@ -19,3 +19,15 @@
 .slider-container {
     padding: 0 2rem;
 }
+
+@media (max-width: 768px) {
+    .slider-container {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider-container {
+        padding: 0 0.5rem;
+    }
+}
