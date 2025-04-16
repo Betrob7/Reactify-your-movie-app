@@ -1,26 +1,27 @@
 import { useParams, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./movieDetailsPage.css";
+
 import Header from "../../components/header/Header";
 import FullMovieCard from "../../components/fullMovieCard/FullMovieCard";
 import Footer from "../../components/footer/Footer";
+import Message from "../../components/Message";
 
-function MovieDetailsPage({ watchlist, toggleWatchlist }) {
+import "./movieDetailsPage.css";
+
+function MovieDetailsPage({ watchlist, toggleWatchlist, url, apiKey }) {
   const { id } = useParams();
   const location = useLocation();
   const stateMovie = location.state?.movie;
+
   const [movie, setMovie] = useState(stateMovie || null);
   const [loading, setLoading] = useState(!stateMovie);
   const [error, setError] = useState(null);
 
-  const apiUrl = "https://www.omdbapi.com/";
-  const apiKey = "1a195302";
-
   useEffect(() => {
     if (stateMovie && !movie.Plot) {
       axios
-        .get(apiUrl, {
+        .get(url, {
           params: {
             apikey: apiKey,
             i: id,
@@ -52,7 +53,7 @@ function MovieDetailsPage({ watchlist, toggleWatchlist }) {
       <>
         <Header />
         <div className="wrapper">
-          <p className="movie__paragraph">Laddar...</p>
+          <Message text="loading..." />
         </div>
       </>
     );
@@ -63,7 +64,7 @@ function MovieDetailsPage({ watchlist, toggleWatchlist }) {
       <>
         <Header />
         <div className="wrapper">
-          <p className="movie__paragraph movie__not-found">{error || "Ingen film att hämta"}</p>
+          <p className="movie__paragraph movie__not-found">{error || "No movie to fetch"}</p>
         </div>
       </>
     );

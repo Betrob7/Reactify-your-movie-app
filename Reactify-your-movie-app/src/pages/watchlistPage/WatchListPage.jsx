@@ -1,8 +1,7 @@
 import Header from "../../components/header/Header";
-// import MovieCard from "../../components/movieCard/MovieCard";
-import MovieCardList from "../../components/MovieCardList";
+import MovieCardList from "../../components/movieCard/MovieCardList";
 import Message from "../../components/Message";
-import HeadingTitle from "../../components/HeadingTitle";
+import HeadingOne from "../../components/HeadingOne";
 import Footer from "../../components/footer/Footer";
 import "./watchListPage.css";
 
@@ -11,17 +10,17 @@ function WatchListPage({ watchlist = [], toggleWatchlist }) {
   const title = `Min Watchlist`;
   const messagetext = `Din watchlist är tom`;
   const className = `movie-card__image`;
+  const headingClass = `watchlist__title`;
 
   return (
     <>
       <Header />
       <section className="watchlist">
-        <HeadingTitle title={title} />
+        <HeadingOne title={title} className={headingClass} />
         {isEmpty ? (
           <Message message={messagetext} />
         ) : (
           <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={watchlist} className={className} />
-          // <MovieCard homePageMovies={watchlist} watchlist={watchlist} toggleWatchlist={toggleWatchlist} />
         )}
       </section>
       <Footer />

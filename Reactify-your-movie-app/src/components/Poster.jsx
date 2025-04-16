@@ -1,4 +1,3 @@
-import React from "react";
 import missingPoster from "../assets/missing-poster.svg";
 
 function Poster({ poster, title, className }) {
@@ -6,5 +5,3 @@ function Poster({ poster, title, className }) {
 }
 
 export default Poster;
-
-// movie__poster "movie-card__image"

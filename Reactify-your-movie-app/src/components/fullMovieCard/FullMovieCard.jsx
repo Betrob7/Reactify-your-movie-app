@@ -1,7 +1,7 @@
 import React from "react";
-import "../../pages/movieDetailsPage/movieDetailsPage.css";
 import FullMovieInfoSection from "./FullMovieInfoSection.jsx";
 import FavSection from "../FavSection.jsx";
+import "../../pages/movieDetailsPage/movieDetailsPage.css";
 
 function FullMovieCard({ movie, watchlist, toggleWatchlist }) {
   const className = `movie__poster`;

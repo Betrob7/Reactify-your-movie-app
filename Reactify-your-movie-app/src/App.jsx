@@ -14,6 +14,8 @@ function App() {
   const [watchlist, setWatchlist] = useState(loadWatchlist); // useEffect gjorde att watchlist försvann vid uppdatering av sidan så fick göra såhär istället
 
   const url = "https://santosnr6.github.io/Data/favoritemovies.json";
+  const omdbUrl = "https://www.omdbapi.com/";
+  const apiKey = "1a195302";
 
   useEffect(() => {
     fetchMovies(url, setHomePageMovies);
@@ -36,9 +38,14 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage watchlist={watchlist} toggleWatchlist={toggleWatchlist} homePageMovies={homePageMovies} />} />
-        {/* hämta id beroende på filmens omdb-id? useParams?*/}
-        <Route path="/movie-details/:id" element={<MovieDetailsPage watchlist={watchlist} toggleWatchlist={toggleWatchlist} />} />
-        <Route path="/search" element={<SearchResultsPage watchlist={watchlist} toggleWatchlist={toggleWatchlist} />} />
+        <Route
+          path="/movie-details/:id"
+          element={<MovieDetailsPage watchlist={watchlist} toggleWatchlist={toggleWatchlist} url={omdbUrl} apiKey={apiKey} />}
+        />
+        <Route
+          path="/search"
+          element={<SearchResultsPage watchlist={watchlist} toggleWatchlist={toggleWatchlist} url={omdbUrl} apiKey={apiKey} />}
+        />
         <Route path="/watchlist" element={<WatchListPage watchlist={watchlist} toggleWatchlist={toggleWatchlist} />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
