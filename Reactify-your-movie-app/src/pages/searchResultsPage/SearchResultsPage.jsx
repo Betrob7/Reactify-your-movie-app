@@ -13,7 +13,7 @@ import MovieCard from "../../components/movieCard/MovieCard";
 import Header from "../../components/header/Header";
 import "./searchResultsPage.css";
 
-function SearchResultsPage({watchlist, toggleWatchlist}) {
+function SearchResultsPage({ watchlist, toggleWatchlist }) {
   const [filmer, setFilmer] = useState([]);
   const [fel, setFel] = useState(null);
 
@@ -60,7 +60,7 @@ function SearchResultsPage({watchlist, toggleWatchlist}) {
       <Header />
       <section className="search-page">
         <h1 className="search__title">Sökresultat för: {query}</h1>
-        {fel && <p>{fel}</p>}
+        {fel && <p className="message">{fel}</p>}
         <MovieCard watchlist={watchlist} toggleWatchlist={toggleWatchlist} homePageMovies={filmer} />
       </section>
       {/* <div>
