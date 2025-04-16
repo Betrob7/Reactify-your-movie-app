@@ -11,23 +11,6 @@ function FullMovieInfoSection({ movie }) {
       <MoviebasicInfo movie={movie} />
       <MovieParagraph>{getValueOrDefault(movie.Plot)}</MovieParagraph>
       <MovieCredits movie={movie} />
-
-      {/* <section className="movie__extra-info">
-        <p className="movie__paragraph">{getValueOrDefault(movie.Runtime)}</p>
-        <p className="movie__paragraph">{getValueOrDefault(movie.Genre)}</p>
-        <p className="movie__paragraph">imdb Rating: {getValueOrDefault(movie.imdbRating)}</p>
-      </section>
-
-      <p className="movie__paragraph">{getValueOrDefault(movie.Plot)}</p>
-
-      <section className="movie__extra-info">
-        <p className="movie__paragraph">
-          <strong>Director:</strong> {getValueOrDefault(movie.Director)}
-        </p>
-        <p className="movie__paragraph">
-          <strong>Actors:</strong> {getValueOrDefault(movie.Actors)}
-        </p>
-      </section> */}
     </section>
   );
 }

@@ -1,32 +1,33 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-// import MovieCard from "../../components/movieCard/MovieCard";
-import MovieCardList from "../../components/MovieCardList";
+
+import MovieCardList from "../../components/movieCard/MovieCardList";
 import Header from "../../components/header/Header";
 import Message from "../../components/Message";
 import Footer from "../../components/footer/Footer";
-import "./searchResultsPage.css";
-import HeadingTitle from "../../components/HeadingTitle";
+import HeadingOne from "../../components/HeadingOne";
 
-function SearchResultsPage({ watchlist, toggleWatchlist }) {
+import "./searchResultsPage.css";
+
+function SearchResultsPage({ watchlist, toggleWatchlist, url, apiKey }) {
   const [filmer, setFilmer] = useState([]);
   const [fel, setFel] = useState(null);
 
-  const title = `Sökresultat för:`;
-
   const location = useLocation();
   const navigate = useNavigate();
-
   const query = new URLSearchParams(location.search).get("q");
-  const apiKey = "1a195302";
+
+  const title = `Sökresultat för:`;
+  const imgClass = `movie-card__image`;
+  const headingClass = "search__title";
 
   useEffect(() => {
     console.log("Query från URL:", query);
     if (!query) return;
 
     axios
-      .get("https://www.omdbapi.com/", {
+      .get(url, {
         params: {
           apikey: apiKey,
           s: query,
@@ -57,24 +58,12 @@ function SearchResultsPage({ watchlist, toggleWatchlist }) {
     <>
       <Header />
       <section className="search-page">
-        <HeadingTitle title={title} />
+        <HeadingOne title={title} className={headingClass} />
         <p className="search__paragraph">{query}</p>
         {fel && <Message message={fel} />}
-        {!fel && <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={filmer} />}
-        {/* // <MovieCard watchlist={watchlist} toggleWatchlist={toggleWatchlist} homePageMovies={filmer} /> */}
+        {!fel && <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={filmer} className={imgClass} />}
       </section>
       <Footer />
-      {/* <div>
-        {filmer.map((film) => ( */}
-      {/* //{" "}
-      <div key={film.imdbID}>
-        // <img src={film.Poster} alt={film.Title} width="100" />
-        // <h3>{film.Title}</h3>
-        // <p>{film.Year}</p>
-        //{" "}
-      </div> */}
-      {/* ))}
-      </div> */}
     </>
   );
 }

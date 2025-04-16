@@ -1,18 +1,22 @@
 import Header from "../../components/header/Header";
-// import MovieCard from "../../components/movieCard/MovieCard";
-import MovieCardList from "../../components/MovieCardList";
+import MovieCardList from "../../components/movieCard/MovieCardList";
 import Carousel from "../../components/carousel/Carousel";
 import Footer from "../../components/footer/Footer";
+import HeadingOne from "../../components/HeadingOne";
 import "./homePage.css";
 
 function HomePage({ homePageMovies, watchlist, toggleWatchlist }) {
+  const imageClass = `movie-card__image`;
+  const title = `Top Movies`;
+  const headingClass = `home-page__title`;
+
   return (
     <>
       <Header />
       <section className="home-page">
         <Carousel homePageMovies={homePageMovies} />
-        <h1 className="home-page__title">Top Movies</h1>
-        <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={homePageMovies} />
+        <HeadingOne title={title} className={headingClass} />
+        <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={homePageMovies} className={imageClass} />
       </section>
       <Footer />
     </>
