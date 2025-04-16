@@ -23,6 +23,7 @@ function PopcornButton({ movie, watchlist, toggleWatchlist }) {
   return (
     <button
       className={`popcorn-button__icon-btn ${inWatchlist ? "pop" : ""}`}
+      aria-label={inWatchlist ? "remove from watchlist" : "add to watchlist"}
       onClick={(e) => {
         e.preventDefault();
         if (!inWatchlist) {
