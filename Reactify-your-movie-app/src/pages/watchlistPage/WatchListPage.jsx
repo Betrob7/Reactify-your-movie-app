@@ -10,6 +10,7 @@ function WatchListPage({ watchlist = [], toggleWatchlist }) {
   const isEmpty = !Array.isArray(watchlist) || watchlist.length === 0;
   const title = `Min Watchlist`;
   const messagetext = `Din watchlist är tom`;
+  const className = `movie-card__image`;
 
   return (
     <>
@@ -19,7 +20,7 @@ function WatchListPage({ watchlist = [], toggleWatchlist }) {
         {isEmpty ? (
           <Message message={messagetext} />
         ) : (
-          <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={watchlist} />
+          <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={watchlist} className={className} />
           // <MovieCard homePageMovies={watchlist} watchlist={watchlist} toggleWatchlist={toggleWatchlist} />
         )}
       </section>

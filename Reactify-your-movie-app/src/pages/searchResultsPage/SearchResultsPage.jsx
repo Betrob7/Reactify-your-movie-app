@@ -14,6 +14,7 @@ function SearchResultsPage({ watchlist, toggleWatchlist }) {
   const [fel, setFel] = useState(null);
 
   const title = `Sökresultat för:`;
+  const className = `movie-card__image`;
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ function SearchResultsPage({ watchlist, toggleWatchlist }) {
         <HeadingTitle title={title} />
         <p className="search__paragraph">{query}</p>
         {fel && <Message message={fel} />}
-        {!fel && <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={filmer} />}
+        {!fel && <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={filmer} className={className} />}
         {/* // <MovieCard watchlist={watchlist} toggleWatchlist={toggleWatchlist} homePageMovies={filmer} /> */}
       </section>
       <Footer />

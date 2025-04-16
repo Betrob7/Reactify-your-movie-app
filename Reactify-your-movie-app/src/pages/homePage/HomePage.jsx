@@ -6,13 +6,14 @@ import Footer from "../../components/footer/Footer";
 import "./homePage.css";
 
 function HomePage({ homePageMovies, watchlist, toggleWatchlist }) {
+  const className = `movie-card__image`;
   return (
     <>
       <Header />
       <section className="home-page">
         <Carousel homePageMovies={homePageMovies} />
         <h1 className="home-page__title">Top Movies</h1>
-        <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={homePageMovies} />
+        <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={homePageMovies} className={className} />
       </section>
       <Footer />
     </>
