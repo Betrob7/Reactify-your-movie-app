@@ -11,6 +11,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import MovieCard from "../../components/movieCard/MovieCard";
 import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 import "./searchResultsPage.css";
 
 function SearchResultsPage({ watchlist, toggleWatchlist }) {
@@ -63,6 +64,7 @@ function SearchResultsPage({ watchlist, toggleWatchlist }) {
         {fel && <p className="message">{fel}</p>}
         <MovieCard watchlist={watchlist} toggleWatchlist={toggleWatchlist} homePageMovies={filmer} />
       </section>
+      <Footer />
       {/* <div>
         {filmer.map((film) => ( */}
       {/* //{" "}
