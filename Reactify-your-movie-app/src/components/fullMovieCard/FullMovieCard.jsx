@@ -1,6 +1,5 @@
 import React from "react";
 import "../../pages/movieDetailsPage/movieDetailsPage.css";
-
 import FullMovieInfoSection from "./FullMovieInfoSection.jsx";
 import FavSection from "../FavSection.jsx";
 
