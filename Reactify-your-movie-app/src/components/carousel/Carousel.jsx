@@ -12,6 +12,22 @@ function Carousel({ homePageMovies }) {
         slidesToShow: 3,
         speed: 500,
         lazyload: true,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    centerPadding: "40px",
+                },
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    centerPadding: "20px",
+                },
+            },
+        ],
     };
 
     return (
