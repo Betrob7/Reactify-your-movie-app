@@ -5,6 +5,7 @@ import axios from "axios";
 import MovieCardList from "../../components/MovieCardList";
 import Header from "../../components/header/Header";
 import Message from "../../components/Message";
+import Footer from "../../components/footer/Footer";
 import "./searchResultsPage.css";
 import HeadingTitle from "../../components/HeadingTitle";
 
@@ -62,6 +63,18 @@ function SearchResultsPage({ watchlist, toggleWatchlist }) {
         {!fel && <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={filmer} />}
         {/* // <MovieCard watchlist={watchlist} toggleWatchlist={toggleWatchlist} homePageMovies={filmer} /> */}
       </section>
+      <Footer />
+      {/* <div>
+        {filmer.map((film) => ( */}
+      {/* //{" "}
+      <div key={film.imdbID}>
+        // <img src={film.Poster} alt={film.Title} width="100" />
+        // <h3>{film.Title}</h3>
+        // <p>{film.Year}</p>
+        //{" "}
+      </div> */}
+      {/* ))}
+      </div> */}
     </>
   );
 }

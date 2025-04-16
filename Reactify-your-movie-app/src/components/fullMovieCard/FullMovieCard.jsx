@@ -4,11 +4,12 @@ import "../../pages/movieDetailsPage/movieDetailsPage.css";
 import missingPoster from "../../assets/missing-poster.svg";
 import Poster from "../Poster.jsx";
 import FullMovieInfoSection from "./FullMovieInfoSection.jsx";
+import PopcornButton from "../popcornButton/PopcornButton.jsx";
 
-function FullMovieCard({ movie }) {
+function FullMovieCard({ movie, watchlist, toggleWatchlist }) {
   return (
     <section className="movie__section">
-      <Poster poster={movie.Poster} title={movie.Title} />
+      <Poster movie={movie} watchlist={watchlist} toggleWatchlist={toggleWatchlist} />
       <FullMovieInfoSection movie={movie} />
       {/* <section className="fav-section">
         <img src={movie.Poster !== "N/A" ? movie.Poster : missingPoster} alt={`This is ${movie.Title}`} className="movie__poster" />

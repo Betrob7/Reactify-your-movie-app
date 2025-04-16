@@ -4,8 +4,9 @@ import axios from "axios";
 import "./movieDetailsPage.css";
 import Header from "../../components/header/Header";
 import FullMovieCard from "../../components/fullMovieCard/FullMovieCard";
+import Footer from "../../components/footer/Footer";
 
-function MovieDetailsPage() {
+function MovieDetailsPage({ watchlist, toggleWatchlist }) {
   const { id } = useParams();
   const location = useLocation();
   const stateMovie = location.state?.movie;
@@ -72,8 +73,9 @@ function MovieDetailsPage() {
     <>
       <Header />
       <div className="wrapper">
-        <FullMovieCard movie={movie} />
+        <FullMovieCard watchlist={watchlist} toggleWatchlist={toggleWatchlist} movie={movie} />
       </div>
+      <Footer />
     </>
   );
 }

@@ -31,6 +31,7 @@ function Header() {
     <header className="header">
       <Link className="header__nav" to="/">
         <img src={movieIcon} alt="Movie-app icon" className="movie-icon" />
+        <h1 className="header__nav-title">MovieScout</h1>
       </Link>
       <form className="header__form" onSubmit={handleSearch}>
         <input

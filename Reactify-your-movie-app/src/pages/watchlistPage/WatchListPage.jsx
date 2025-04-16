@@ -3,6 +3,7 @@ import Header from "../../components/header/Header";
 import MovieCardList from "../../components/MovieCardList";
 import Message from "../../components/Message";
 import HeadingTitle from "../../components/HeadingTitle";
+import Footer from "../../components/footer/Footer";
 import "./watchListPage.css";
 
 function WatchListPage({ watchlist = [], toggleWatchlist }) {
@@ -22,6 +23,7 @@ function WatchListPage({ watchlist = [], toggleWatchlist }) {
           // <MovieCard homePageMovies={watchlist} watchlist={watchlist} toggleWatchlist={toggleWatchlist} />
         )}
       </section>
+      <Footer />
     </>
   );
 }
