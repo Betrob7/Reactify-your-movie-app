@@ -11,7 +11,7 @@ function WatchListPage({ watchlist = [], toggleWatchlist }) {
       <section className="watchlist">
         <h2 className="watchlist__title">Min Watchlist</h2>
         {isEmpty ? (
-          <p className="watchlist__info">Din watchlist är tom.</p>
+          <p className="message">Din watchlist är tom.</p>
         ) : (
           <MovieCard homePageMovies={watchlist} watchlist={watchlist} toggleWatchlist={toggleWatchlist} />
         )}

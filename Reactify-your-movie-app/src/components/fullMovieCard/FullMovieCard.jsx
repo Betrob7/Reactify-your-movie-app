@@ -3,12 +3,14 @@ import { getValueOrDefault } from "../../utils/utils.js";
 import "../../pages/movieDetailsPage/movieDetailsPage.css";
 import missingPoster from "../../assets/missing-poster.svg";
 
-function FullMovieCard({ movie }) {
+import PopcornButton from "../popcornButton/PopcornButton.jsx";
+
+function FullMovieCard({ movie, watchlist, toggleWatchlist }) {
   return (
     <section className="movie__section">
       <section className="fav-section">
+        <PopcornButton movie={movie} watchlist={watchlist} toggleWatchlist={toggleWatchlist} />
         <img src={movie.Poster !== "N/A" ? movie.Poster : missingPoster} alt={`This is ${movie.Title}`} className="movie__poster" />
-        <p className="movie__toggle-fav">Lägg till /ta bort</p>
       </section>
 
       <section className="movie__info-section">
