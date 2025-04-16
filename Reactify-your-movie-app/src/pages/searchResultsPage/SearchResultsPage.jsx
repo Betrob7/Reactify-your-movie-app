@@ -1,21 +1,18 @@
-// import React from "react";
-
-// function SearchResultsPage() {
-//   return <div>SearchResults</div>;
-// }
-
-// export default SearchResultsPage;
-
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import MovieCard from "../../components/movieCard/MovieCard";
+// import MovieCard from "../../components/movieCard/MovieCard";
+import MovieCardList from "../../components/MovieCardList";
 import Header from "../../components/header/Header";
+import Message from "../../components/Message";
 import "./searchResultsPage.css";
+import HeadingTitle from "../../components/HeadingTitle";
 
 function SearchResultsPage({ watchlist, toggleWatchlist }) {
   const [filmer, setFilmer] = useState([]);
   const [fel, setFel] = useState(null);
+
+  const title = `Sökresultat för:`;
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -59,21 +56,12 @@ function SearchResultsPage({ watchlist, toggleWatchlist }) {
     <>
       <Header />
       <section className="search-page">
-        <h1 className="search__title">Sökresultat för: {query}</h1>
-        {fel && <p className="message">{fel}</p>}
-        <MovieCard watchlist={watchlist} toggleWatchlist={toggleWatchlist} homePageMovies={filmer} />
+        <HeadingTitle title={title} />
+        <p className="search__paragraph">{query}</p>
+        {fel && <Message message={fel} />}
+        {!fel && <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={filmer} />}
+        {/* // <MovieCard watchlist={watchlist} toggleWatchlist={toggleWatchlist} homePageMovies={filmer} /> */}
       </section>
-      {/* <div>
-        {filmer.map((film) => ( */}
-      {/* //{" "}
-      <div key={film.imdbID}>
-        // <img src={film.Poster} alt={film.Title} width="100" />
-        // <h3>{film.Title}</h3>
-        // <p>{film.Year}</p>
-        //{" "}
-      </div> */}
-      {/* ))}
-      </div> */}
     </>
   );
 }

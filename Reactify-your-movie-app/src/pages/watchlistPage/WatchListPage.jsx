@@ -1,19 +1,25 @@
 import Header from "../../components/header/Header";
-import MovieCard from "../../components/movieCard/MovieCard";
+// import MovieCard from "../../components/movieCard/MovieCard";
+import MovieCardList from "../../components/MovieCardList";
+import Message from "../../components/Message";
+import HeadingTitle from "../../components/HeadingTitle";
 import "./watchListPage.css";
 
 function WatchListPage({ watchlist = [], toggleWatchlist }) {
   const isEmpty = !Array.isArray(watchlist) || watchlist.length === 0;
+  const title = `Min Watchlist`;
+  const messagetext = `Din watchlist är tom`;
 
   return (
     <>
       <Header />
       <section className="watchlist">
-        <h2 className="watchlist__title">Min Watchlist</h2>
+        <HeadingTitle title={title} />
         {isEmpty ? (
-          <p className="message">Din watchlist är tom.</p>
+          <Message message={messagetext} />
         ) : (
-          <MovieCard homePageMovies={watchlist} watchlist={watchlist} toggleWatchlist={toggleWatchlist} />
+          <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={watchlist} />
+          // <MovieCard homePageMovies={watchlist} watchlist={watchlist} toggleWatchlist={toggleWatchlist} />
         )}
       </section>
     </>

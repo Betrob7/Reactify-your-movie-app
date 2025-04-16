@@ -1,16 +1,16 @@
 import Header from "../../components/header/Header";
-import MovieCard from "../../components/movieCard/MovieCard";
+// import MovieCard from "../../components/movieCard/MovieCard";
+import MovieCardList from "../../components/MovieCardList";
 import Carousel from "../../components/carousel/Carousel";
 
-function HomePage({homePageMovies, watchlist, toggleWatchlist}) {
-  
- return (
+function HomePage({ homePageMovies, watchlist, toggleWatchlist }) {
+  return (
     <>
-    <Header />
-    <section className="home-page">
-      <Carousel homePageMovies={homePageMovies} />
-      <MovieCard watchlist={watchlist} toggleWatchlist={toggleWatchlist} homePageMovies={homePageMovies} />
-    </section>
+      <Header />
+      <section className="home-page">
+        <Carousel homePageMovies={homePageMovies} />
+        <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={homePageMovies} />
+      </section>
     </>
   );
 }

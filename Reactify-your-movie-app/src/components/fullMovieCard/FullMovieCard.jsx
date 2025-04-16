@@ -2,16 +2,20 @@ import React from "react";
 import { getValueOrDefault } from "../../utils/utils.js";
 import "../../pages/movieDetailsPage/movieDetailsPage.css";
 import missingPoster from "../../assets/missing-poster.svg";
+import Poster from "../Poster.jsx";
+import FullMovieInfoSection from "./FullMovieInfoSection.jsx";
 
 function FullMovieCard({ movie }) {
   return (
     <section className="movie__section">
-      <section className="fav-section">
+      <Poster poster={movie.Poster} title={movie.Title} />
+      <FullMovieInfoSection movie={movie} />
+      {/* <section className="fav-section">
         <img src={movie.Poster !== "N/A" ? movie.Poster : missingPoster} alt={`This is ${movie.Title}`} className="movie__poster" />
         <p className="movie__toggle-fav">Lägg till /ta bort</p>
-      </section>
+      </section> */}
 
-      <section className="movie__info-section">
+      {/* <section className="movie__info-section">
         <h1 className="movie__title">{movie.Title}</h1>
 
         <section className="movie__extra-info">
@@ -30,7 +34,7 @@ function FullMovieCard({ movie }) {
             <strong>Actors:</strong> {getValueOrDefault(movie.Actors)}
           </p>
         </section>
-      </section>
+      </section> */}
     </section>
   );
 }
