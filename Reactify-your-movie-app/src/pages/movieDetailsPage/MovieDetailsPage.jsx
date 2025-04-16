@@ -64,7 +64,7 @@ function MovieDetailsPage({ watchlist, toggleWatchlist, url, apiKey }) {
       <>
         <Header />
         <div className="wrapper">
-          <p className="movie__paragraph movie__not-found">{error || "No movie to fetch"}</p>
+          <Message text={error || "No movie to fetch"} />
         </div>
       </>
     );
