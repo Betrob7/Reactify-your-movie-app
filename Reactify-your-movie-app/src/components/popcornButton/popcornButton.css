@@ -23,6 +23,24 @@
     animation: pop-scale 0.3s ease;
     color: var(--highlight-popcorn-color);
   }
+
+  .popcorn-button__icon-btn:hover {
+    transform: scale(1.1) rotate(-3deg);
+  }
+
+  .popcorn-burst {
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+  }
+  
+  .popcorn-particle {
+    position: absolute;
+    color: var(--highlight-popcorn-color, gold);
+    font-size: 1.5rem;
+  }
+  
   
   @keyframes pop-scale {
     0% {
