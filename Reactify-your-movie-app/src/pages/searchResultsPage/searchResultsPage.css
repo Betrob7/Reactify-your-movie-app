@@ -1,5 +1,11 @@
 .search__title {
   color: var(--main-font-color);
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 0 0.8rem;
+}
+
+.search__paragraph {
+  color: var(--moviecard-color);
+  text-align: center;
+  font-size: 2rem;
 }

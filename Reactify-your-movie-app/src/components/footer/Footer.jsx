@@ -16,7 +16,6 @@ function Footer() {
           <li className="footer__list-item">
             <TiSocialInstagram />
           </li>
-          <li className="footer__list-item"></li>
         </ul>
       </motion.footer>
       <p className="footer__text">&copy;2025 Mighty Nerds - All rights reserved</p>
