@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 import HomePage from "./pages/homePage/HomePage";
 import WatchListPage from "./pages/watchlistPage/WatchListPage";
 import SearchResultsPage from "./pages/searchResultsPage/SearchResultsPage";
 import MovieDetailsPage from "./pages/movieDetailsPage/MovieDetailsPage";
 import ErrorPage from "./pages/errorPage/ErrorPage";
-import { useState, useEffect } from "react";
 
 import { loadWatchlist, saveWatchlist } from "./utils/localStorage";
 import { fetchMovies } from "./utils/fetchMovies";
