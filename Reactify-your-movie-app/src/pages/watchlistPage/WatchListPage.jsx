@@ -7,8 +7,8 @@ import "./watchListPage.css";
 
 function WatchListPage({ watchlist = [], toggleWatchlist }) {
   const isEmpty = !Array.isArray(watchlist) || watchlist.length === 0;
-  const title = `Min Watchlist`;
-  const messagetext = `Din watchlist är tom`;
+  const title = `My Watch List`;
+  const messagetext = `Your watch list is empty`;
   const className = `movie-card__image`;
   const headingClass = `watchlist__title`;
 

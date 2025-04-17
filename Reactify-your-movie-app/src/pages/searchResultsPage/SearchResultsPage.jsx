@@ -18,7 +18,7 @@ function SearchResultsPage({ watchlist, toggleWatchlist, url, apiKey }) {
   const navigate = useNavigate();
   const query = new URLSearchParams(location.search).get("q");
 
-  const title = `Sökresultat för:`;
+  const title = `Search resluts for:`;
   const imgClass = `movie-card__image`;
   const headingClass = "search__title";
 
