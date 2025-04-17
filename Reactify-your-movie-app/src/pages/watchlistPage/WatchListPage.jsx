@@ -7,22 +7,18 @@ import "./watchListPage.css";
 
 function WatchListPage({ watchlist = [], toggleWatchlist }) {
   const isEmpty = !Array.isArray(watchlist) || watchlist.length === 0;
-  const title = `Min Watchlist`;
-  const messagetext = `Din watchlist är tom`;
-  const className = `movie-card__image`;
-  const headingClass = `watchlist__title`;
 
   return (
     <>
       <Header />
-      <section className="watchlist">
-        <HeadingOne title={title} className={headingClass} />
+      <main className="watchlist">
+        <HeadingOne title="Min Watchlist" className="watchlist__title" />
         {isEmpty ? (
-          <Message message={messagetext} />
+          <Message message="Din watchlist är tom" />
         ) : (
-          <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={watchlist} className={className} />
+          <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={watchlist} className="movie-card__image" />
         )}
-      </section>
+      </main>
       <Footer />
     </>
   );
