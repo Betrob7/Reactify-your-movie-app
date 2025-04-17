@@ -14,4 +14,26 @@
     height: 40px;
     width: 40px;
     opacity: 1;
+    color: var(--main-font-color);
+}
+
+.slick-prev,
+.slick-next {
+    font-size: 0;
+}
+
+.slider-container {
+    padding: 2rem 2rem;
+}
+
+@media (max-width: 768px) {
+    .slider-container {
+        padding: 1rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider-container {
+        padding: 0.5rem 0.5rem;
+    }
 }

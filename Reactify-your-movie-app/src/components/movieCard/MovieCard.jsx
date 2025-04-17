@@ -1,18 +1,18 @@
-import "./movieCard.css";
 import { Link } from "react-router-dom";
+import PopcornButton from "../popcornButton/PopcornButton";
+import Poster from "../Poster";
+import HeadingThree from "../HeadingThree";
 
-function MovieCard({ homePageMovies }) {
+function MovieCard({ movie, watchlist, toggleWatchlist, className }) {
+  const headingClass = `movie-card__title`;
   return (
-    <section className="movie-card">
-      {homePageMovies.map((movie) => (
-        <Link to={`/movie-details/${movie.imdbID}`} state={{ movie }} aria-label={`Go to detailed page for ${movie.Title}`}>
-          <article key={movie.imdbID} className="movie-card__article">
-            <img className="movie-card__image" src={movie.Poster} alt={`Poster for ${movie.Title}`} />
-            <h3 className="movie-card__title">{movie.Title}</h3>
-          </article>
-        </Link>
-      ))}
-    </section>
+    <Link to={`/movie-details/${movie.imdbID}`} state={{ movie }}>
+      <article className="movie-card__article">
+        <PopcornButton watchlist={watchlist} toggleWatchlist={toggleWatchlist} movie={movie} />
+        <Poster poster={movie.Poster} title={movie.Title} className={className} />
+        <HeadingThree text={movie.Title} className={headingClass} />
+      </article>
+    </Link>
   );
 }
 

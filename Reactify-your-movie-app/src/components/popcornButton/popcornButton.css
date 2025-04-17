@@ -1,0 +1,55 @@
+
+.popcorn-button__icon-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    background-color: var(--icon-bg-color);
+    border-radius: 50%;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    color: var(--popcorn-color);
+    z-index: 2;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  
+  .popcorn-button__icon-btn.pop {
+    animation: pop-scale 0.3s ease;
+    color: var(--highlight-popcorn-color);
+  }
+
+  .popcorn-button__icon-btn:hover {
+    transform: scale(1.1) rotate(-3deg);
+  }
+
+  .popcorn-burst {
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+  }
+  
+  .popcorn-particle {
+    position: absolute;
+    color: var(--highlight-popcorn-color, gold);
+    font-size: 1.5rem;
+  }
+  
+  
+  @keyframes pop-scale {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.6) rotate(-15deg);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }

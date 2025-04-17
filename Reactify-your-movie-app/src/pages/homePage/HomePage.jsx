@@ -1,31 +1,25 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import Header from "../../components/header/Header";
-import MovieCard from "../../components/movieCard/MovieCard";
+import MovieCardList from "../../components/movieCard/MovieCardList";
 import Carousel from "../../components/carousel/Carousel";
-import { Link } from "react-router-dom";
+import Footer from "../../components/footer/Footer";
+import HeadingOne from "../../components/HeadingOne";
+import "./homePage.css";
 
-function HomePage() {
-  const [homePageMovies, setHomePageMovies] = useState([]);
-  const url = "https://santosnr6.github.io/Data/favoritemovies.json";
-
-  useEffect(() => {
-    axios
-      .get(url)
-      .then((response) => {
-        console.log(response.data);
-        const shuffled = response.data.sort(() => 0.5 - Math.random());
-        setHomePageMovies(shuffled);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+function HomePage({ homePageMovies, watchlist, toggleWatchlist }) {
+  const imageClass = `movie-card__image`;
+  const title = `Top Movies`;
+  const headingClass = `home-page__title`;
 
   return (
-    <section className="home-page">
+    <>
       <Header />
-      <Carousel homePageMovies={homePageMovies} />
-      <MovieCard homePageMovies={homePageMovies} />
-    </section>
+      <section className="home-page">
+        <Carousel homePageMovies={homePageMovies} />
+        <HeadingOne title={title} className={headingClass} />
+        <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={homePageMovies} className={imageClass} />
+      </section>
+      <Footer />
+    </>
   );
 }
 

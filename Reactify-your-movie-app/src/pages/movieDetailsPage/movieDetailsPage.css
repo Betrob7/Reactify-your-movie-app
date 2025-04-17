@@ -79,7 +79,13 @@
   color: var(--error-font-color);
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 768px) {
+
+  .wrapper {
+    padding: 0;
+    margin: 2rem 4rem;
+  }
+
   .movie__section {
     grid-template-columns: 1fr;
     padding: 2rem;
@@ -87,10 +93,40 @@
 
   .fav-section {
     grid-column: 1 / -1;
+    margin-bottom: 1rem;
   }
 
   .movie__info-section {
     grid-column: 1 / -1;
     padding: 0rem;
+  }
+
+  .movie__title {
+    font-size: 1.5rem;
+  }
+
+  .movie__paragraph {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie__extra-info {
+  
+    .movie__paragraph {
+      font-size: .8rem;
+    }
+  }
+
+  .movie__section {
+    padding: 0rem;
+  }
+
+  .movie__title {
+    font-size: 1rem;
+  }
+
+  .movie__paragraph {
+    font-size: .7rem;
   }
 }
