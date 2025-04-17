@@ -6,17 +6,13 @@ import HeadingOne from "../../components/HeadingOne";
 import "./homePage.css";
 
 function HomePage({ homePageMovies, watchlist, toggleWatchlist }) {
-  const imageClass = `movie-card__image`;
-  const title = `Top Movies`;
-  const headingClass = `home-page__title`;
-
   return (
     <>
       <Header />
       <main className="home-page">
         <Carousel homePageMovies={homePageMovies} />
-        <HeadingOne title={title} className={headingClass} />
-        <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={homePageMovies} className={imageClass} />
+        <HeadingOne title="Top Movies" className="home-page__title" />
+        <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={homePageMovies} className="movie-card__image" />
       </main>
       <Footer />
     </>
