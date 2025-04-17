@@ -34,7 +34,7 @@ function SearchResultsPage({ watchlist, toggleWatchlist, url, apiKey }) {
           const searchResults = res.data.Search;
           if (searchResults.length === 1) {
             const movie = searchResults[0];
-            navigate(`/movie-details/${movie.imdbID}`, { state: { movie } });
+            navigate(`/movie/${movie.imdbID}`, { state: { movie } });
           } else {
             setFilmer(res.data.Search);
             setFel(null);

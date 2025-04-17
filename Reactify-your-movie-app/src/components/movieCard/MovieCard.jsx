@@ -5,7 +5,7 @@ import HeadingThree from "../HeadingThree";
 
 function MovieCard({ movie, watchlist, toggleWatchlist, className }) {
   return (
-    <Link to={`/movie-details/${movie.imdbID}`} state={{ movie }}>
+    <Link to={`/movie/${movie.imdbID}`} state={{ movie }}>
       <article className="movie-card__article">
         <PopcornButton watchlist={watchlist} toggleWatchlist={toggleWatchlist} movie={movie} />
         <Poster poster={movie.Poster} title={movie.Title} className={className} />

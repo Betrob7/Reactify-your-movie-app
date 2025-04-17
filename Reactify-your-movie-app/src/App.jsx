@@ -40,7 +40,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage watchlist={watchlist} toggleWatchlist={toggleWatchlist} homePageMovies={homePageMovies} />} />
         <Route
-          path="/movie-details/:id"
+          path="/movie/:id"
           element={<MovieDetailsPage watchlist={watchlist} toggleWatchlist={toggleWatchlist} url={omdbUrl} apiKey={apiKey} />}
         />
         <Route
