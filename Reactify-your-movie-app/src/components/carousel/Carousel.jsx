@@ -31,8 +31,8 @@ function Carousel({ homePageMovies }) {
   };
 
   return (
-    <div className="slider-container">
-      <Slider {...settings} aria-roledescription="carousel">
+    <div className="slider-container" aria-label="Carousel for movie trailers">
+      <Slider {...settings}>
         {homePageMovies.slice(0, 5).map((movie, index) => (
           <div key={index}>
             <iframe

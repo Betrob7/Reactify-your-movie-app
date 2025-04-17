@@ -1,22 +1,12 @@
 import "./footer.css";
-import { TiSocialYoutube, TiSocialFacebookCircular, TiSocialInstagram } from "react-icons/ti";
 import { motion } from "framer-motion";
+import FooterList from "./FooterList";
 
 function Footer() {
   return (
     <>
       <motion.footer className="footer">
-        <ul className="footer__list">
-          <li className="footer__list-item">
-            <TiSocialYoutube />
-          </li>
-          <li className="footer__list-item">
-            <TiSocialFacebookCircular />
-          </li>
-          <li className="footer__list-item">
-            <TiSocialInstagram />
-          </li>
-        </ul>
+        <FooterList />
       </motion.footer>
       <p className="footer__text">&copy;2025 Mighty Nerds - All rights reserved</p>
     </>
@@ -24,3 +14,15 @@ function Footer() {
 }
 
 export default Footer;
+
+// <ul className="footer__list">
+// <li className="footer__list-item">
+//   <TiSocialYoutube />
+// </li>
+// <li className="footer__list-item">
+//   <TiSocialFacebookCircular />
+// </li>
+// <li className="footer__list-item">
+//   <TiSocialInstagram />
+// </li>
+// </ul>
