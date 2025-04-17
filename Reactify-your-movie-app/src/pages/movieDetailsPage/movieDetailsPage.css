@@ -1,4 +1,4 @@
-.wrapper {
+.movie-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,8 +80,7 @@
 }
 
 @media screen and (max-width: 768px) {
-
-  .wrapper {
+  .movie-page {
     padding: 0;
     margin: 2rem 4rem;
   }
@@ -112,9 +111,8 @@
 
 @media (max-width: 480px) {
   .movie__extra-info {
-  
     .movie__paragraph {
-      font-size: .8rem;
+      font-size: 0.8rem;
     }
   }
 
@@ -127,6 +125,6 @@
   }
 
   .movie__paragraph {
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
 }

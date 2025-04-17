@@ -6,15 +6,13 @@ import Footer from "../../components/footer/Footer";
 import HeadingOne from "../../components/HeadingOne";
 
 function ErrorPage() {
-  const headingClass = `error-page__title`;
-  const title = `Page not found!`;
   return (
     <>
       <Header />
-      <section className="error-page">
-        <HeadingOne title={title} className={headingClass} />
-        <Lottie className="error-page__animation" animationData={errorAnimation} loop={true} />
-      </section>
+      <main className="error-page" aria-label="404 error page - page not found">
+        <HeadingOne title="Page not found!" className="error-page__title" />
+        <Lottie className="error-page__animation" animationData={errorAnimation} loop={true} aria-hidden="true" />
+      </main>
       <Footer />
     </>
   );

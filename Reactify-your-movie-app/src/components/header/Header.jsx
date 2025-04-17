@@ -4,13 +4,13 @@ import Navigation from "../navigation/navigation";
 import "./header.css";
 
 function Header() {
-    return (
-        <header className="header">
-            <Logo />
-            <SearchBar />
-            <Navigation />
-        </header>
-    );
+  return (
+    <header className="header">
+      <Logo />
+      <SearchBar />
+      <Navigation />
+    </header>
+  );
 }
 
 export default Header;

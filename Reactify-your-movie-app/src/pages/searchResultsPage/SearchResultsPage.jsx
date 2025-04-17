@@ -18,10 +18,6 @@ function SearchResultsPage({ watchlist, toggleWatchlist, url, apiKey }) {
   const navigate = useNavigate();
   const query = new URLSearchParams(location.search).get("q");
 
-  const title = `Search resluts for:`;
-  const imgClass = `movie-card__image`;
-  const headingClass = "search__title";
-
   useEffect(() => {
     console.log("Query från URL:", query);
     if (!query) return;
@@ -38,7 +34,7 @@ function SearchResultsPage({ watchlist, toggleWatchlist, url, apiKey }) {
           const searchResults = res.data.Search;
           if (searchResults.length === 1) {
             const movie = searchResults[0];
-            navigate(`/movie-details/${movie.imdbID}`, { state: { movie } });
+            navigate(`/movie/${movie.imdbID}`, { state: { movie } });
           } else {
             setFilmer(res.data.Search);
             setFel(null);
@@ -57,12 +53,12 @@ function SearchResultsPage({ watchlist, toggleWatchlist, url, apiKey }) {
   return (
     <>
       <Header />
-      <section className="search-page">
-        <HeadingOne title={title} className={headingClass} />
+      <main className="search-page">
+        <HeadingOne title="Search Results for:" className="search__title" />
         <p className="search__paragraph">{query}</p>
         {fel && <Message message={fel} />}
-        {!fel && <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={filmer} className={imgClass} />}
-      </section>
+        {!fel && <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={filmer} className="movie-card__image" />}
+      </main>
       <Footer />
     </>
   );

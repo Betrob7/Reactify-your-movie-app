@@ -52,9 +52,9 @@ function MovieDetailsPage({ watchlist, toggleWatchlist, url, apiKey }) {
     return (
       <>
         <Header />
-        <div className="wrapper">
+        <main className="movie-page">
           <Message text="loading..." />
-        </div>
+        </main>
       </>
     );
   }
@@ -63,9 +63,9 @@ function MovieDetailsPage({ watchlist, toggleWatchlist, url, apiKey }) {
     return (
       <>
         <Header />
-        <div className="wrapper">
+        <main className="movie-page">
           <Message text={error || "No movie to fetch"} />
-        </div>
+        </main>
       </>
     );
   }
@@ -73,9 +73,9 @@ function MovieDetailsPage({ watchlist, toggleWatchlist, url, apiKey }) {
   return (
     <>
       <Header />
-      <div className="wrapper">
+      <main className="movie-page">
         <FullMovieCard watchlist={watchlist} toggleWatchlist={toggleWatchlist} movie={movie} />
-      </div>
+      </main>
       <Footer />
     </>
   );
