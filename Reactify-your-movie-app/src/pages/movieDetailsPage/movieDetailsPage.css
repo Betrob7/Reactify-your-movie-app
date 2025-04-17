@@ -1,0 +1,130 @@
+.movie-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem 6rem;
+}
+
+.movie__section {
+  display: grid;
+  grid-template-columns: 1fr 3fr; /* För att skapa två kolumner */
+  grid-template-rows: auto;
+
+  max-width: 1200px;
+}
+.fav-section {
+  position: relative;
+  grid-column: 1 / 2; /* Gör så att bilden tar upp båda raderna */
+}
+
+.movie__poster {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.movie__toggle-fav {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: var(--highlight-font-color);
+}
+
+.movie__info-section {
+  grid-column: 2 / 3;
+  display: flex; /* Använd flexbox istället för grid för att bättre hantera mellanrum */
+  flex-direction: column; /* Gör så att elementen placeras vertikalt */
+  gap: 1rem; /* Skapar utrymme mellan elementen */
+  padding: 0rem 2rem;
+  justify-content: flex-start; /* Se till att elementen placeras högst upp */
+  /* display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 1rem;
+
+  padding: 2rem; */
+}
+.movie__title {
+  font-size: 2rem;
+  color: var(--main-font-color);
+
+  grid-column: 1 / -1;
+}
+
+.movie__extra-info {
+  grid-column: span 2;
+
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+
+  .movie__paragraph {
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--main-font-color);
+    /* padding: 0rem 1rem; */
+  }
+}
+
+.movie__paragraph {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  grid-column: 1/ -1;
+
+  color: var(--main-font-color);
+  letter-spacing: 1px;
+}
+
+.movie__not-found {
+  color: var(--error-font-color);
+}
+
+@media screen and (max-width: 768px) {
+  .movie-page {
+    padding: 0;
+    margin: 2rem 4rem;
+  }
+
+  .movie__section {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
+
+  .fav-section {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+  }
+
+  .movie__info-section {
+    grid-column: 1 / -1;
+    padding: 0rem;
+  }
+
+  .movie__title {
+    font-size: 1.5rem;
+  }
+
+  .movie__paragraph {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie__extra-info {
+    .movie__paragraph {
+      font-size: 0.8rem;
+    }
+  }
+
+  .movie__section {
+    padding: 0rem;
+  }
+
+  .movie__title {
+    font-size: 1rem;
+  }
+
+  .movie__paragraph {
+    font-size: 0.7rem;
+  }
+}
