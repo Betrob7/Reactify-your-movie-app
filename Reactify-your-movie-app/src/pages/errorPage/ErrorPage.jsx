@@ -11,10 +11,10 @@ function ErrorPage() {
   return (
     <>
       <Header />
-      <section className="error-page">
+      <main className="error-page">
         <HeadingOne title={title} className={headingClass} />
         <Lottie className="error-page__animation" animationData={errorAnimation} loop={true} />
-      </section>
+      </main>
       <Footer />
     </>
   );

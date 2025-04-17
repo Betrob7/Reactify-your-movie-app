@@ -13,11 +13,11 @@ function HomePage({ homePageMovies, watchlist, toggleWatchlist }) {
   return (
     <>
       <Header />
-      <section className="home-page">
+      <main className="home-page">
         <Carousel homePageMovies={homePageMovies} />
         <HeadingOne title={title} className={headingClass} />
         <MovieCardList watchlist={watchlist} toggleWatchlist={toggleWatchlist} movies={homePageMovies} className={imageClass} />
-      </section>
+      </main>
       <Footer />
     </>
   );
